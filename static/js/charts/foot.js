@@ -11,10 +11,7 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab'], function(Cookie, Menu, Tab) {
     var navPage = getNavPage(),
         selectedItem = null;
 
-    /*sideMenu.delegate('a[href!="#"]', 'click', function(e) {
-        if($(this).hasClass('indexPage')){
-            return;
-        }
+    sideMenu.delegate('a[href!="#"]', 'click', function(e) {
         e.preventDefault();
         var href = $(this).attr('href');
         $('li', sideMenu).removeClass('active');
@@ -22,7 +19,7 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab'], function(Cookie, Menu, Tab) {
         selectedItem.parents('li.treeview').addClass('active');
         resetDemo(href);
         resetTitle(selectedItem, selectedItem.parents('li.treeview'));
-    });*/
+    });
     // 页面加载完后根据hash值设置当前选中项
     if (navPage) {
         selectedItem = sideMenu.find('a[href="' + navPage + '"]').parent();
