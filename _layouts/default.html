@@ -29,7 +29,7 @@
         }
     </style>
 </head>
-<body class="skin-blue">
+<body class="skin-blue fixed">
 
     <div class="header">
         <a href="index.html" class="logo">
@@ -53,12 +53,8 @@
     {{ content }}
 
 
-    {% for cates in site.categories %}
-    22
-    {% for cate in cates %}
-    11
-    {{ cate.output }}
-    {% endfor %}
+    {% for cates in site.categories.area %}
+            {{ cates.title }}
     {% endfor %}
 
     <!-- jQuery 2.0.2 -->
