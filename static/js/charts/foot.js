@@ -21,13 +21,13 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab'], function(Cookie, Menu, Tab) {
         selectedItem = null;
 
     sideMenu.delegate('a[href!="#"]', 'click', function(e) {
-        /*e.preventDefault();
+        e.preventDefault();
         var href = $(this).attr('href');
         $('li', sideMenu).removeClass('active');
         selectedItem = $(this).parent().addClass('active');
         selectedItem.parents('li.treeview').addClass('active');
         resetDemo(href);
-        resetTitle(selectedItem, selectedItem.parents('li.treeview'));*/
+        resetTitle(selectedItem, selectedItem.parents('li.treeview'));
     });
     // 页面加载完后根据hash值设置当前选中项
     if (navPage) {
@@ -74,38 +74,6 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab'], function(Cookie, Menu, Tab) {
         }
     });
 
-    // var tab = new Tab.TabPanel({
-    //   render : '#tab',
-    //   elCls : 'nav-tabs',
-    //   panelContainer : '#panel',
-    //   autoRender: true,
-    //   children:[
-    //     {text:'源代码',value:'1'},
-    //     {text:'JS',value:'2'}
-    //   ]
-    // });
-    // tab.setSelected(tab.getItemAt(0));
-
-    // $('#J_Edit').on('click',function(){
-    //   var sender = $(this);
-    //   if(sender.text() == '编辑'){
-    //     sender.text('取消');
-    //     $('#J_Txtjs').show();
-    //     $('#J_Txtjs').height($('#J_JS').height());
-    //     $('#J_JS').hide();
-    //   }else{
-    //     sender.text('编辑');
-    //     $('#J_JS').show();
-    //     $('#J_Txtjs').hide();
-    //   }
-    // });
-
-    // $('#J_SelLoader').val(loaderStr);
-    // $('#J_SelLoader').on('change',function(){
-    //   var loader = $('#J_SelLoader').val();
-    //   Cookie.set('loader',loader);
-    //   location.reload();
-    // });
     function resetDemo(href) {
         // demoEl.attr('src',href + loadParam);
         demoEl.attr('src', href);
