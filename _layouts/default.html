@@ -73,8 +73,10 @@
                         {% endfor %}
                     </li>
 
-                    {% for cat in site.categories %}
-                    <li class="treeview">{{ cat[0] }}</li>
+                    {% for cat in site.category-list %}
+                    <li class="treeview">{{cat.type}}
+                        <a href="#"><i class="fa fa-bar-chart-o"></i>基本图形<i class="fa pull-right fa-angle-down"></i></a>
+                    </li>
                     {% endfor %}
                 </ul>
             </section>

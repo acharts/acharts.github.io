@@ -29,7 +29,7 @@ port:        4000
 baseurl:
 url:         http://localhost:4000
 lsi:         false
-category-list: [code, editors, math, unix]
+category-list: [{type:area}, {type:line}]
 
 maruku:
   use_tex:    false
