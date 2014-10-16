@@ -67,6 +67,10 @@
                         </ul>
                         <p><a href="#{{ category[0] }}-ref">&#8617;</a></p>
                         {% endfor %}
+
+                        {% for cat in site.category-list %}
+                       1 {{ cat }}
+                        {% endfor %}
                     </li>
 
                     {% for cat in site.categories %}
