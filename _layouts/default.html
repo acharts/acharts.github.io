@@ -54,10 +54,6 @@
                 <ul class="sidebar-menu" id="J_SideBar">
                     <li data-minheight="520" data-maxheight="0" data-nosrc="1"><a href="/index.html"><i class="fa fa-dashboard"></i>首页</a></li>
                     <li class="treeview">
-                        {% for post in site.posts %}
-                            {{ post.title }}
-                        {% endfor %}
-
                         {% for category in site.categories %}
                         <h2 id="{{ category[0] }}-ref">{{ category[0] }}</h2>
                         <ul>
@@ -67,15 +63,11 @@
                         </ul>
                         <p><a href="#{{ category[0] }}-ref">&#8617;</a></p>
                         {% endfor %}
-
-                        {% for cat in site.category-list %}
-                         {{ cat }}
-                        {% endfor %}
                     </li>
 
                     {% for cat in site.category-list %}
-                    <li class="treeview">{{cat.type}}
-                        <a href="#"><i class="fa fa-bar-chart-o"></i>基本图形<i class="fa pull-right fa-angle-down"></i></a>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-bar-chart-o"></i>{{ cat }}<i class="fa pull-right fa-angle-down"></i></a>
                     </li>
                     {% endfor %}
                 </ul>
