@@ -55,7 +55,13 @@
                     <li data-minheight="520" data-maxheight="0" data-nosrc="1"><a href="/index.html"><i class="fa fa-dashboard"></i>首页</a></li>
                     <li class="treeview">
                         {% for post in site.posts %}
-                        {{ post.title }}
+                            {{ post.title }}
+                        {% endfor %}
+
+                        {% for cates in site.categories %}
+                            {% for cate in cates %}
+                                {{ cate.title }}
+                            {% endfor %}
                         {% endfor %}
                     </li>
                 </ul>
