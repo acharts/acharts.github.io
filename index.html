@@ -5,7 +5,7 @@ cate: blog
 ---
 
 
-<header class="header">
+<div class="header">
     <a href="index.html" class="logo">
         <!-- Add the class icon to your logo image or logo icon to add the margining -->
         bui
@@ -22,9 +22,10 @@ cate: blog
         <div class="navbar-right">
         </div>
     </nav>
-</header>
+</div>
 
 {% for cates in site.categories %}
+        22
     {% for cate in cates %}
         11
         {{ cate.output }}
