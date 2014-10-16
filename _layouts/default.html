@@ -31,5 +31,29 @@
 </head>
 <body class="skin-blue">
     {{ content }}
+
+
+    <!-- jQuery 2.0.2 -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <!-- jQuery UI 1.10.3 -->
+    <script src="js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- 代码高亮 -->
+    <script src="js/plugins/google-code-prettify/prettify.js"></script>
+
+    <script src="js/charts/get-menus.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('#J_SideBar').append(getMenus());
+    </script>
+
+
+    <!-- charts App 全局设置-->
+    <script src="js/charts/app.js" type="text/javascript"></script>
+    <!-- charts for demo purposes 右侧漂浮小按钮-->
+    <script src="js/charts/demo.js" type="text/javascript"></script>
+
+    <script src="http://g.tbcdn.cn/fi/bui/seed-min.js"></script>
+    <script src="js/charts/foot.js" type="text/javascript"></script>
 </body>
 </html>
