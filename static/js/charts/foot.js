@@ -7,20 +7,13 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab'], function(Cookie, Menu, Tab) {
     var CLS_DOC = 'doc-content',
         demoEl = $('#J_Demo'),
         sideMenu = $('#J_SideBar');
-    // sideMenu = new Menu.Menu({//new BUI.Tab.Tab({
-    //   render : '#J_Menu',
-    //   autoRender : true,
-    //   elCls : 'demo-menu',//'nav-tabs',
-    //   idField : 'href',
-    //   children : menus,
-    //   itemTpl : '<a href="{href}'+ loadParam+'">{text}</a>'
-    // });
-
 
     var navPage = getNavPage(),
         selectedItem = null;
 
     sideMenu.delegate('a[href!="#"]', 'click', function(e) {
+        if($(this).hasClass('indexPage')) return;
+        
         e.preventDefault();
         var href = $(this).attr('href');
         $('li', sideMenu).removeClass('active');
