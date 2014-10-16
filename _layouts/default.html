@@ -53,10 +53,9 @@
             <section class="sidebar">
                 <ul class="sidebar-menu" id="J_SideBar">
                     <li data-minheight="520" data-maxheight="0" data-nosrc="1"><a href="/index.html"><i class="fa fa-dashboard"></i>首页</a></li>
-
                     {% for category in site.categories %}
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-bar-chart-o"></i>{{ category[0] }}<i class="fa pull-right fa-angle-down"></i></a>
+                        <a href="javascript: void(0);"><i class="fa fa-bar-chart-o"></i>{{ category[0] }}<i class="fa pull-right fa-angle-down"></i></a>
                         <ul class="treeview-menu">
                             {% for post in category[1] %}
                             <li>
