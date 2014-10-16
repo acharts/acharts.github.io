@@ -3,6 +3,10 @@ layout: null
 title: 基本折线图
 category: line
 ---
+{% raw %}
+    {% include chart-header.ext %}
+{% endraw %}
+
 <div class="detail-section">
     <div id="canvas">
 
@@ -60,3 +64,7 @@ category: line
 
     chart.render();
 </script>
+
+{% raw %}
+    {% include chart-footer.ext %}
+{% endraw %}

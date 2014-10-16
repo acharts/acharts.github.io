@@ -67,7 +67,7 @@ body > .header {
 }
 @media screen and (min-width: 992px) {
   .left-side {
-    top: 70px;
+    top: 50px;
   }
   /*Right side strech mode*/
   .right-side.strech {
