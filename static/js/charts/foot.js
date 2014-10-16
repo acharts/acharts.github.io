@@ -21,13 +21,13 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab'], function(Cookie, Menu, Tab) {
         selectedItem = null;
 
     sideMenu.delegate('a[href!="#"]', 'click', function(e) {
-        e.preventDefault();
+        /*e.preventDefault();
         var href = $(this).attr('href');
         $('li', sideMenu).removeClass('active');
         selectedItem = $(this).parent().addClass('active');
         selectedItem.parents('li.treeview').addClass('active');
         resetDemo(href);
-        resetTitle(selectedItem, selectedItem.parents('li.treeview'));
+        resetTitle(selectedItem, selectedItem.parents('li.treeview'));*/
     });
     // 页面加载完后根据hash值设置当前选中项
     if (navPage) {
