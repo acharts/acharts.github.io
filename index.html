@@ -58,7 +58,9 @@ cate: area
                     <ul class="treeview-menu">
                         {% for post in category[1] %}
                         <li>
-                            <a href="{{ post.url }}" style="margin-left: 10px">{{ post.title }}</a>
+                            <a href="{{ post.url }}" style="margin-left: 10px">
+                                <i class="fa fa-angle-double-right"></i>{{ post.title }}
+                            </a>
                         </li>
                         {% endfor %}
                     </ul>
