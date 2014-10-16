@@ -1,14 +1,8 @@
----
-layout: null
-title: 首页
-cate: area
----
-
 <!DOCTYPE html>
 <html>
 <head>
     　　<meta charset="utf-8" >
-    <title>{{ page.title }} - ACharts</title>
+    <title>ACharts</title>
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="/static/css/ionicons.min.css" rel="stylesheet" type="text/css" />
@@ -59,7 +53,7 @@ cate: area
                         {% for post in category[1] %}
                         <li>
                             <a href="{{ post.url }}" style="margin-left: 10px">
-                                <i class="fa fa-angle-double-right"></i>{{ post.title }}
+                                <i class="fa fa-angle-double-right"></i> {{ post.title }}
                             </a>
                         </li>
                         {% endfor %}
