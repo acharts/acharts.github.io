@@ -1,9 +1,121 @@
 ---
-layout: default
+layout: null
 title: 首页
 cate: area
 ---
 
+<!DOCTYPE html>
+<html>
+<head>
+    　　<meta charset="utf-8" >
+    <title>{{ page.title }} - ACharts</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/charts.css" rel="stylesheet" type="text/css" />
 
-首页
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        .prettyprint,ol.linenums {
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="skin-blue">
+
+<div class="header">
+    <a href="index.html" class="logo">
+        <!-- Add the class icon to your logo image or logo icon to add the margining -->
+        AChart
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <div class="navbar-right">
+        </div>
+    </nav>
+</div>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <aside class="left-side sidebar-offcanvas">
+        <section class="sidebar">
+            <ul class="sidebar-menu" id="J_SideBar">
+                <li data-minheight="520" data-maxheight="0" data-nosrc="1">
+                    <a href="/index.html"><i class="fa fa-dashboard"></i>首页</a>
+                </li>
+                {% for category in site.categories %}
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-bar-chart-o"></i>{{ category[0] }}<i class="fa pull-right fa-angle-down"></i></a>
+                    <ul class="treeview-menu">
+                        {% for post in category[1] %}
+                        <li>
+                            <a href="{{ post.url }}" style="margin-left: 10px">{{ post.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </aside>
+    <aside class="right-side">
+        <section class="content-header" id="J_ContentHeader">
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="demo-container">
+                <iframe id="J_Demo" name="demo-form" class="demo-frame" src="" width="100%" height="100%" frameborder="0">
+
+                </iframe>
+            </div>
+
+            <!-- 源码 -->
+            <div class="nav-tabs-custom" id="J_SrcBox">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab_src" data-toggle="tab">源码</a>
+                    </li>
+                    <li><a href="#tab_js" data-toggle="tab">JS</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_src">
+                        <pre class="prettyprint linenums" id="J_Src"></pre>
+                    </div>
+                    <div class="tab-pane" id="tab_js">
+                        <pre class="prettyprint linenums" id="J_JS"></pre>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </aside>
+</div>
+
+<!-- jQuery 1.8.1 -->
+<script src="http://g.tbcdn.cn/fi/bui/jquery-1.8.1.min.js"></script>
+<!-- jQuery UI 1.10.3 -->
+<script src="/static/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+<!-- Bootstrap -->
+<script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- 代码高亮 -->
+<script src="/static/js/plugins/google-code-prettify/prettify.js"></script>
+
+<!-- charts App 全局设置-->
+<script src="/static/js/charts/app.js" type="text/javascript"></script>
+<!-- charts for demo purposes 右侧漂浮小按钮
+<script src="/static/js/charts/demo.js" type="text/javascript"></script>-->
+
+<script src="http://g.tbcdn.cn/fi/bui/seed-min.js"></script>
+<script src="/static/js/charts/foot.js" type="text/javascript"></script>
+</body>
+</html>
 
