@@ -54,8 +54,8 @@
                 <ul class="sidebar-menu" id="J_SideBar">
                     <li data-minheight="520" data-maxheight="0" data-nosrc="1"><a href="/index.html"><i class="fa fa-dashboard"></i>首页</a></li>
                     <li class="treeview">
-                        {% for poem in site.categories.area %}
-                        {{ poem.output }}
+                        {% for post in site.posts %}
+                        {{ post.title }}
                         {% endfor %}
                     </li>
                 </ul>
