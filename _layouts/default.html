@@ -54,19 +54,17 @@
                 <ul class="sidebar-menu" id="J_SideBar">
                     <li data-minheight="520" data-maxheight="0" data-nosrc="1"><a href="/index.html"><i class="fa fa-dashboard"></i>首页</a></li>
 
-                    {% for category in site.categories %}
-                    <li><a name="{{ category | first }}">{{ category | first }}</a>
+
+                    <li class="treeview">
+                        {% for category in site.categories %}
+                        <h2 id="{{ category[0] }}-ref">{{ category[0] }}</h2>
                         <ul>
-                            {% for posts in category %}
-                            {% for post in posts %}
+                            {% for post in category[1] %}
                             <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                             {% endfor %}
-                            {% endfor %}
                         </ul>
-                    </li>
-                    {% endfor %}
-                    <li class="treeview">
-                        sar
+                        <p><a href="#{{ category[0] }}-ref">&#8617;</a></p>
+                        {% endfor %}
                     </li>
 
                     {% for cat in site.category-list %}
