@@ -56,7 +56,9 @@
                 <ul class="sidebar-menu" id="J_SideBar">
                     <li data-minheight="520" data-maxheight="0" data-nosrc="1"><a href="/index.html"><i class="fa fa-dashboard"></i>首页</a></li>
                     <li class="treeview">
-
+                        {% for poem in site.categories.poems %}
+                        {{ poem.output }}
+                        {% endfor %}
                     </li>
                 </ul>
             </section>
@@ -77,7 +79,7 @@
 
     <script src="/static/js/charts/get-menus.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $('#J_SideBar').append(getMenus());
+        //$('#J_SideBar').append(getMenus());
     </script>
     <!-- charts App 全局设置-->
     <script src="/static/js/charts/app.js" type="text/javascript"></script>
