@@ -68,6 +68,10 @@
                         <p><a href="#{{ category[0] }}-ref">&#8617;</a></p>
                         {% endfor %}
                     </li>
+
+                    {% for cat in site.categories %}
+                    <li class="treeview">{{ cat[0] }}</li>
+                    {% endfor %}
                 </ul>
             </section>
         </aside>
