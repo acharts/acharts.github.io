@@ -43,12 +43,6 @@
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <aside class="left-side sidebar-offcanvas">
         <section class="sidebar">
-            {% for collection in site.collections %}
-            {% for col in collection[1] %}
-            {{col.url}}
-            {% endfor %}
-            {{collection}}
-            {% endfor %}
             <ul class="sidebar-menu" id="J_SideBar">
                 <li data-minheight="520" data-maxheight="0" data-nosrc="1">
                     <a href="#" class="indexPage"><i class="fa fa-dashboard"></i>首页</a>
