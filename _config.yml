@@ -61,3 +61,8 @@ kramdown:
 
 redcloth:
   hard_breaks: true
+
+collections:
+  chart:
+    output: true
+    permalink: /:path/:title/
