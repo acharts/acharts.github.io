@@ -12,7 +12,7 @@ show_drafts: nil
 limit_posts: 0
 pygments:    true
 
-permalink:     date
+permalink:     /:title
 paginate_path: 'page:num'
 
 markdown:      maruku
