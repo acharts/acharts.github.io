@@ -44,6 +44,7 @@
     <aside class="left-side sidebar-offcanvas">
         <section class="sidebar">
             {% for collection in site.collections %}
+            {{collection}}
             <section>
                 <h1><a href="{{ collection.directory }}">{{ collection.title }}</a></h1>
                 Label: {{ collection.label }}
