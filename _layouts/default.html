@@ -45,14 +45,9 @@
         <section class="sidebar">
             {% for collection in site.collections %}
             {% for col in collection[1] %}
-                {{col}}
+            {{col.url}}
             {% endfor %}
             {{collection}}
-            <section>
-                <h1><a href="{{ collection.directory }}">{{ collection.title }}</a></h1>
-                Label: {{ collection.label }}
-            </section>
-            {% endfor %}
             <ul class="sidebar-menu" id="J_SideBar">
                 <li data-minheight="520" data-maxheight="0" data-nosrc="1">
                     <a href="#" class="indexPage"><i class="fa fa-dashboard"></i>首页</a>
