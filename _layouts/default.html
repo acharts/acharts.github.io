@@ -44,6 +44,9 @@
     <aside class="left-side sidebar-offcanvas">
         <section class="sidebar">
             {% for collection in site.collections %}
+            {% for col in collection[1] %}
+                {{col}} {{col.output}}
+            {% endfor %}
             {{collection}}
             <section>
                 <h1><a href="{{ collection.directory }}">{{ collection.title }}</a></h1>
