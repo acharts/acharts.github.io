@@ -97,11 +97,15 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
         if(localStorage){
             var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'SmoothBase';
             if($.trim(theme) != 'Base'){
-                var reg = /(\s+)width/ig;
-                var spaces = reg.exec(data)[1];
-                var hash = location.hash;
-                if(hash.indexOf('/graphic-') < 0){
-                    data = data.replace("width",spaces + "theme : AChart.Theme."+ theme +","+ spaces +"width");
+                var reg = /(\s+)series/ig;
+                var arr = reg.exec(data);
+                if(arr && arr[1]){
+                    var spaces = arr[1];
+                    var hash = location.hash;
+                    //if(hash.indexOf('/graphic-') < 0){
+                        data = data.replace("new AChart({","new AChart({" + spaces + "theme : AChart.Theme."+ theme);
+                        data = data.replace("new AStock({","new AStock({" + spaces + "theme : AChart.Theme."+ theme);
+                    //}
                 }
             } 
             //删除展示script
