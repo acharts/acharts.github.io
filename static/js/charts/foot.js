@@ -19,6 +19,7 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
         selectedItem.parents('li.treeview').addClass('active');
         resetDemo(href);
         resetTitle(selectedItem, selectedItem.parents('li.treeview'));
+        $(window).scrollTop(0);
     });
     // 页面加载完后根据hash值设置当前选中项
     if (navPage) {
