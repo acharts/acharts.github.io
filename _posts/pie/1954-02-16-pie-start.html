@@ -1,0 +1,76 @@
+---
+layout: null
+title: 多层饼图
+category: 饼图
+---
+
+{% include chart-header.html %}
+
+<div class="detail-section">
+    <div id="canvas">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+
+  <script type="text/javascript">
+    var chart = new AChart({
+      id : 'canvas',
+      width : 1000,
+      height : 500,
+      plotCfg : {
+        margin : [50,50,100]
+      },
+      tooltip : {
+        shared : true
+      },
+      seriesOptions : {
+          pieCfg : {
+            allowPointSelect : false,
+            labels : null,
+            animate : false
+          }
+      },
+      series: [{
+          type: 'pie',
+          radius : 100,
+          innerRadius : 80,
+          name: 'outter',
+          startAngle : -198, // 360 * 60% / 2 + 90
+          endAngle : 162, //
+          data: [
+            {name : 'outter',   y : 60},
+            {name : '',y : 40,attrs : {fill : '#efefef'},placeHolder : true}
+          ]
+      },
+      {
+          type: 'pie',
+          name: 'middle',
+          radius : 80, 
+          innerRadius : 60,
+          startAngle :  -144,//360 * 30% / 2 + 90
+          endAngle : 226,
+          data: [
+            {name : 'middle',   y : 30,attrs : {fill : 'rgb(85, 194, 187)'}},
+            {name : '',y : 70,attrs : {fill : '#efefef'},placeHolder : true}
+          ]
+      },
+      {
+          type: 'pie',
+          name: 'inner',
+          radius : 60,
+          innerRadius : 40,
+          startAngle :  -180,//360 * 50% / 2 + 90
+          endAngle : 180,
+          data: [
+            {name : 'inner',   y : 50,attrs : {fill : 'rgb(161, 45, 45)'}},
+            {name : '',y : 50,attrs : {fill : '#efefef'},placeHolder : true}
+          ]
+      }]
+    });
+
+    chart.render();
+      </script>
+
+{% include chart-footer.html %}
