@@ -1,0 +1,97 @@
+---
+layout: null
+title: 标记
+category: 基本图形
+---
+
+{% include chart-header.html %}
+
+<div class="detail-section">
+    <div id="canvas">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+  <script type="text/javascript">
+   
+      //创建画板
+      var canvas = new AChart.Canvas({
+        id : 'canvas',
+        height : 400,
+        width : 500
+      });
+
+      //圆形
+      var circle = canvas.addShape('marker',{
+        x : 400,
+        y : 100,
+        fill: 'blue',
+        radius : 10,
+        symbol : 'circle'
+      });
+
+      //三角
+      var triangle = canvas.addShape('marker',{
+        x : 350,
+        y : 100,
+        fill: 'blue',
+        radius : 10,
+        symbol : 'triangle'
+      });
+      //方形
+      var rect = canvas.addShape('marker',{
+        x : 400,
+        y : 200,
+        fill: '#ffcc00',
+        radius : 10,
+        symbol : 'square'
+      });
+       //倒三角
+      canvas.addShape('marker',{
+        x : 350,
+        y : 200,
+        fill: 'yellow',
+        radius : 10,
+        symbol : 'triangle-down'
+      });
+      //菱形
+       var  diamond = canvas.addShape('marker',{
+        x : 350,
+        y : 150,
+        fill: 'red',
+        radius : 10,
+        symbol : 'diamond'
+      });
+      //图片
+      var image = canvas.addShape('marker',{
+        x : 400,
+        y : 150,
+        radius : 10,
+        symbol : 'url(http://mat1.gtimg.com/www/images/qq2012/weather/20120906/sun.png)'
+      });
+      //自定义
+      var cpath = canvas.addShape('marker',{
+        x : 400,
+        y : 250,
+        path : 'M {x} {y} l 10 0 l0 10 z',
+        fill : 'red'
+      });
+
+      //所有事件可以在分组、画板上监听
+      canvas.on('click',function  (ev) {
+        var shape = ev.target.shape;
+        if(shape){
+          var preRadius = shape.attr('radius');
+          if(preRadius < 100){
+             shape.attr('radius',preRadius * 2);
+          }else{
+            shape.attr('radius',preRadius/2 );
+          }
+        }
+      });
+
+      
+      </script>
+
+{% include chart-footer.html %}

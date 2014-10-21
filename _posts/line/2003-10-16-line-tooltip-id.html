@@ -1,0 +1,82 @@
+---
+layout: null
+title: HTMLtooltip
+category: 折线图
+---
+
+{% include chart-header.html %}
+<style>
+  .ac-tooltip{
+    position:absolute;
+    visibility:hidden;
+    border : 1px solid #efefef;
+    background-color: white;
+    opacity: .8;
+    padding: 20px;
+
+    transition: top 200ms,left 200ms;
+    -moz-transition:  top 200ms,left 200ms;  /* Firefox 4 */
+    -webkit-transition:  top 200ms,left 200ms; /* Safari 和 Chrome */
+    -o-transition:  top 200ms,left 200ms;
+  }
+
+  .ac-tooltip .ac-title{
+    margin: 0;
+    padding: 5px 0;
+  }
+
+  .ac-tooltip .ac-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ac-tooltip li{
+    line-height:  22px;
+  }
+</style>
+    <div class="detail-section">
+      <div id="canvas">
+
+      </div>
+    </div>
+
+    <div style="display:none">
+      <div id="tip" class="ac-tooltip"><h3 class="ac-title"></h3><ul class="ac-list"></ul></div>
+    </div>
+
+{% include chart-script.html %}
+  <script type="text/javascript">
+  
+        var chart = new AChart({
+          id : 'canvas', //render改成 id
+          width : 950,
+          height : 500,
+          plotCfg : {
+            margin : [50,50,80] //画板的边距
+          },
+          xAxis : {
+            categories : ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+          },
+          tooltip : {
+            valueSuffix : '°C',
+            shared : false, //是否多个数据序列共同显示信息
+            custom : true, //自定义tooltip
+            html : '#tip',//自定义tooltip的 模板或者 #id
+            crosshairs : true //是否出现基准线
+          },
+          series : [{
+              name: 'Tokyo',
+              data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+          }, {
+              name: 'London',
+              data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+          }, {
+              name: 'Sahnghai',
+              data: [17.0, 16.9, 19.5, 24.5, 28.2, 31.5, 35.2, 36.5, 33.3, 28.3, 23.9, 19.6]
+          }]
+        });
+
+        chart.render();
+  </script>
+
+{% include chart-footer.html %}
