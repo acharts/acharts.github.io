@@ -1,4 +1,4 @@
-BUI.use(['bui/cookie', 'bui/menu', 'bui/tab'], function(Cookie, Menu, Tab) {
+BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Menu, Tab , Select) {
     var loaderStr = Cookie.get('loader'),
         // loadParam = '?loader=' + loaderStr,
         regxScript = /<script[^><]*>[^<]*<\/script>/ig,
@@ -80,6 +80,17 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab'], function(Cookie, Menu, Tab) {
     }
 
     function setSrc(data) {
+        //根据主题替换；
+        if(localStorage){
+            var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'SmoothBase';
+            var reg = /(\s+)width/ig;
+            var spaces = reg.exec(data)[1];
+            var hash = location.hash;
+            if(hash.indexOf('/graphic-') < 0){
+                data = data.replace("width",spaces + "theme : Chart.Theme."+ theme +","+ spaces +"width");
+            }
+            data = data.replace("<script>if(localStorage){var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'SmoothBase';AChart.ATTRS.theme = AChart.Theme[theme];}</script>","")
+        }
         $('pre.prettyprinted').removeClass('prettyprinted');
         $('#J_Src').text(data);
         prettyPrint();
@@ -126,5 +137,35 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab'], function(Cookie, Menu, Tab) {
             href = str.substring(1);
         }
         return href;
+    }
+    if(localStorage){
+        //修改theme
+        if(!localStorage['AChartIOTheme']){
+            $('#themeSelHide').val('SmoothBase');
+        }
+        else{
+            $('#themeSelHide').val(localStorage['AChartIOTheme']);
+        }
+        var items = [
+              {text:'默认样式',value:'Base '},
+              {text:'SmoothBase',value:'SmoothBase'},
+              {text:'Smooth1',value:'Smooth1'},
+              {text:'Smooth2',value:'Smooth2'},
+              {text:'Smooth3',value:'Smooth3'},
+              {text:'Smooth4',value:'Smooth4'},
+              {text:'Smooth5',value:'Smooth5'},
+              {text:'Smooth6',value:'Smooth6'},
+              {text:'Smooth7',value:'Smooth7'},
+            ],
+            select = new Select.Select({  
+              render:'#themeSel',
+              valueField:'#themeSelHide',
+              items:items
+            });
+        select.render();
+        select.on('change', function(ev){
+            localStorage['AChartIOTheme'] = ev.value;
+            window.location.reload();
+        }); 
     }
 });

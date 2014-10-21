@@ -1,4 +1,2 @@
 <script src="http://g.assets.daily.taobao.net/bui/acharts/1.0.12/acharts-min.js"></script>
-<script>
-	AChart.ATTRS.theme = AChart.Theme.SmoothBase;//替换ACharts的皮肤
-</script>
+<script>if(localStorage){var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'SmoothBase';AChart.ATTRS.theme = AChart.Theme[theme];}</script>
