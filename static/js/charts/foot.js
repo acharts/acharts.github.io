@@ -110,7 +110,7 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
                 }
             } 
             //删除展示script
-            data = data.replace("<script>if(localStorage){var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'SmoothBase';AChart.ATTRS.theme = AChart.Theme[theme];}</script>","")
+            data = data.replace("<script>if(localStorage){var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'Smooth1';AChart.ATTRS.theme = AChart.Theme[theme];}</script>","")
         }
         return data;
     }
@@ -155,14 +155,13 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
     if(localStorage){
         //修改theme
         if(!localStorage['AChartIOTheme']){
-            $('#themeSelHide').val('SmoothBase');
+            $('#themeSelHide').val('Smooth1');
         }
         else{
             $('#themeSelHide').val(localStorage['AChartIOTheme']);
         }
         var items = [
               {text:'default',value:'Base'},
-              {text:'SmoothBase',value:'SmoothBase'},
               {text:'Smooth1',value:'Smooth1'},
               {text:'Smooth2',value:'Smooth2'},
               {text:'Smooth3',value:'Smooth3'},
