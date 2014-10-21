@@ -80,25 +80,34 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
     }
 
     function setSrc(data) {
-        //根据主题替换；
-        if(localStorage){
-            var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'SmoothBase';
-            var reg = /(\s+)width/ig;
-            var spaces = reg.exec(data)[1];
-            var hash = location.hash;
-            if(hash.indexOf('/graphic-') < 0){
-                data = data.replace("width",spaces + "theme : Chart.Theme."+ theme +","+ spaces +"width");
-            }
-            data = data.replace("<script>if(localStorage){var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'SmoothBase';AChart.ATTRS.theme = AChart.Theme[theme];}</script>","")
-        }
+        data = dealCodes(data);
         $('pre.prettyprinted').removeClass('prettyprinted');
         $('#J_Src').text(data);
         prettyPrint();
     }
 
     function setScript(script) {
+        script = dealCodes(script);
         $('#J_JS').text(script);
         $('#J_Txtjs').val(script);
+    }
+
+    //根据主题替换；
+    function dealCodes(data){
+        if(localStorage){
+            var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'SmoothBase';
+            if($.trim(theme) != 'Base'){
+                var reg = /(\s+)width/ig;
+                var spaces = reg.exec(data)[1];
+                var hash = location.hash;
+                if(hash.indexOf('/graphic-') < 0){
+                    data = data.replace("width",spaces + "theme : AChart.Theme."+ theme +","+ spaces +"width");
+                }
+            } 
+            //删除展示script
+            data = data.replace("<script>if(localStorage){var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'SmoothBase';AChart.ATTRS.theme = AChart.Theme[theme];}</script>","")
+        }
+        return data;
     }
 
     function setHtml(html) {
@@ -147,7 +156,7 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
             $('#themeSelHide').val(localStorage['AChartIOTheme']);
         }
         var items = [
-              {text:'默认样式',value:'Base '},
+              {text:'default',value:'Base'},
               {text:'SmoothBase',value:'SmoothBase'},
               {text:'Smooth1',value:'Smooth1'},
               {text:'Smooth2',value:'Smooth2'},
