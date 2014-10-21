@@ -26,6 +26,11 @@ category: 股票图
             margin : [60,50,60,50] //画板的边距
         },
         xAxis : {//格式化时间
+            labels : {
+              label : {
+                'font-size': '10'
+              }
+            },
             type : 'time' ,
             formatter : function(value)   {
                 return Chart.Date.format(new Date(value),'yyyy-mm-dd');
