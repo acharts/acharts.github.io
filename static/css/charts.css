@@ -67,7 +67,8 @@ body > .header {
 }
 @media screen and (min-width: 992px) {
   .left-side {
-    top: 50px;
+    top: 49px !important;
+    top: 70px;
   }
   /*Right side strech mode*/
   .right-side.strech {
@@ -107,6 +108,7 @@ body.fixed .navbar {
 }
 body.fixed .wrapper {
   margin-top: 50px;
+  margin-top: 32px !important;
 }
 /* Content */
 .content {
