@@ -6,11 +6,46 @@ category: 折线图
 
 {% include chart-header.html %}
 
-<div class="detail-section">
-    <div id="canvas">
-
+<style>
+  .ac-tooltip{
+    border-width:  : 0;
+    background-color: white;
+    opacity: .8;
+    padding: 20px;
+  }
+ 
+  .ac-tooltip .ac-title{
+    margin: 0;
+    padding: 5px 0;
+  }
+ 
+  .ac-tooltip .ac-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ac-tooltip li{
+    line-height:  22px;
+  }
+</style>
+ 
+    <div class="detail-section">
+      <div class="row">
+        <div class="span8">
+          <div id="tip" class="ac-tooltip">
+            <h3 class="ac-title"></h3>
+            <table>
+              <tbody class="ac-list">
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="canvas">
+ 
+      </div>
     </div>
-</div>
 
 {% include chart-script.html %}
   <script type="text/javascript">
