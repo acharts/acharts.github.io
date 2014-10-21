@@ -63,7 +63,7 @@ body > .header {
 .left-side {
   position: absolute;
   width: 220px;
-  top: 0;
+  top: 50px;
 }
 @media screen and (min-width: 992px) {
   .left-side {
