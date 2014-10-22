@@ -17,8 +17,7 @@ category: 股票图
 {% include script.html %}
 
   <script type="text/javascript">
-  $.getJSON('../../json/stock-data.json',function  (data) {
-    $.getJSON('../../json/stock-data1.json',function  (data1) {
+    $.getJSON('/json/stock-dataArr.json',function  (data) {
             var stock = new AStock({
                 id : 'canvas',
                 width : 950,
@@ -63,17 +62,16 @@ category: 股票图
                     name: 'test to EUR',
                     pointInterval: 24 * 3600 * 1000,
                     pointStart: Date.UTC(2006, 0, 01),
-                    data: data
+                    data: data[1]
                 },{
                   name : 'test1 to EUR',
-                  data :data1,
+                  data :data[0],
                   pointInterval: 24 * 3600 * 1000,
                   pointStart: Date.UTC(2006, 0, 01)
                 }]
             });
             stock.render();
         });
-    });
   </script>
 
 {% include chart-footer.html %}

@@ -1,0 +1,185 @@
+---
+layout: null
+title: 超大数据
+category: 股票图
+--- 
+
+{% include chart-header.html %}
+<style>
+    .bui-ext-mask{
+        height: 100%;
+        left: 0;
+        filter: alpha(opacity=50);
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1040;
+        background-color: #333;
+        opacity: .5;
+        display: none;
+    }
+    .bui-ext-mask-msg{
+        background: none repeat-x scroll 0 -16px #e8e9ef;
+        border: 1px solid #c3c3d6;
+        left: 0;
+        padding: 2px;
+        position: absolute;
+        top: 0;
+        z-index: 1050;
+        left: 426px;
+        top: 250px;
+        display: none;
+    }
+    .x-mask-loading div{
+        line-height: 16px;
+        padding: 5px 10px 5px 25px;
+    }
+</style>
+
+<div class="detail-section">
+    <div id="canvas" style="width : 950px;height : 400px;">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+{% include stock-script.html %}
+{% include script.html %}
+
+  <script type="text/javascript">
+    //为防止卡顿，超大数据用异步方法解决。
+    //仅仅给出取样的数据画出控制区域的趋势
+    var data = [
+        [1140364800000,120.71101807523519],
+        [1144684800000,155.5964084342122],
+        [1149004800000,100.48085292801261],
+        [1153324800000,198.45422352664173],
+        [1157644800000,127.39523623604327],
+        [1161964800000,199.91343086585402],
+        [1166284800000,118.34122324362397],
+        [1170604800000,174.1292219609022],
+        [1174924800000,159.27182564046234],
+        [1179244800000,184.04145101085305],
+        [1183564800000,194.65793843846768],
+        [1187884800000,107.20093129202724],
+        [1192204800000,103.36915554944426],
+        [1196524800000,166.31577091757208],
+        [1200844800000,169.40223542042077],
+        [1205164800000,193.01859657280147],
+        [1209484800000,129.5550697715953],
+        [1213804800000,179.85579557716846],
+        [1218124800000,104.989637224935],
+        [1222444800000,197.66542341094464],
+        [1226764800000,141.34130931925029],
+        [1231084800000,144.6959596592933],
+        [1235404800000,114.47373398113996],
+        [1239724800000,176.88599666580558],
+        [1244044800000,141.66373745538294],
+        [1248364800000,122.08413938060403],
+        [1252684800000,153.37850607465953],
+        [1257004800000,187.75815591216087],
+        [1261324800000,114.50578132644296],
+        [1265644800000,174.4244135217741],
+        [1269964800000,139.50329944491386],
+        [1274284800000,139.9400117341429],
+        [1278604800000,132.4480624170974],
+        [1282924800000,130.05964746698737],
+        [1287244800000,164.1545878490433],
+        [1291564800000,195.38614288903773],
+        [1295884800000,101.55394931789488],
+        [1300204800000,110.86454659234732],
+        [1304524800000,123.01755181979388],
+        [1308844800000,180.9295411920175],
+        [1313164800000,104.48335446417332],
+        [1317484800000,141.01368593983352],
+        [1321804800000,124.00140680838376],
+        [1326124800000,173.4737095190212],
+        [1330444800000,171.4243818540126],
+        [1334764800000,139.1742562642321],
+        [1339084800000,144.39176053274423],
+        [1343404800000,165.27524932753295],
+        [1347724800000,165.05385430064052],
+        [1352044800000,127.93006421998143],
+        [1356364800000,177.31867160182446],
+        [1360684800000,136.13069453276694],
+        [1365004800000,120.67596472334117]
+    ];
+    //添加遮罩层
+    var mask = $('<div class="bui-ext-mask"></div>').appendTo($('#canvas'));
+    var msg = $('<div class="bui-ext-mask-msg x-mask-loading"><div>loading ....</div></div>').appendTo($('#canvas'));
+    var stock = new AStock({
+        id : 'canvas',
+        width : 950,
+        height : 400,
+        plotCfg : {
+            margin : [60,50,60,50] //画板的边距
+        },
+        xAxis : {//格式化时间
+            type : 'time' ,
+            formatter : function(value)   {
+                return Chart.Date.format(new Date(value),'yyyy-mm-dd');
+            },
+            animate : false
+        },
+        yAxis : {
+            animate : false
+        },
+        seriesOptions : { //设置多个序列共同的属性
+            lineCfg : { //如果数据序列未指定类型，则默认为指定了xxCfg的类型，否则都默认是line
+                markers : {
+                    single: true
+                },
+                animate : false
+            }
+        },
+        legend: null,
+        rangeSelectorOption: {
+            //设置上方图形不随着控制区域的变更而直接刷新页面
+            autoRefresh: false,
+            //设置拖动结束才执行回调
+            dragRefresh: false,
+            zoom: [1136073600000+ 86400000 * 130,1136073600000+ 86400000 * 170],
+            //设置回调函数,异步取数据并刷新上方图形
+            zoomChange: function(startTime,endTime){
+                mask.show();
+                msg.show();
+                //为了展示效果，设置了延迟，正式使用请删掉延迟
+                setTimeout(function(){
+                    $.getJSON('/json/stock-large.json',{startTime: startTime,endTime: endTime},function(data){
+                        //数据是假数据，仅做效果，不可为准
+
+                        //根据返回的数据渲染图表
+                        var chart =stock.get('chart'),
+                            chartSeries = chart.getSeries();
+
+                        chartSeries[0].changeData(data);
+                        chart.repaint();
+
+                        //去除遮罩
+                        mask.hide();
+                        msg.hide();
+                    })
+                },1000);
+                
+            }
+        },
+        tooltip : {
+            valueSuffix : '￥'
+        },
+        series : [{
+            name: 'USD to EUR',
+            line : {
+                'stroke-width' : 1
+            },
+            lineActived : {
+                'stroke-width' : 1
+            },
+            data: data
+        }]
+    });
+
+    stock.render();
+
+  </script>
+
+{% include chart-footer.html %}

@@ -103,10 +103,10 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
                 if(arr && arr[1]){
                     var spaces = arr[1];
                     var hash = location.hash;
-                    //if(hash.indexOf('/graphic-') < 0){
+                    if(hash.indexOf('/theme-') < 0){
                         data = data.replace("new AChart({","new AChart({" + spaces + "theme : AChart.Theme."+ theme);
                         data = data.replace("new AStock({","new AStock({" + spaces + "theme : AChart.Theme."+ theme);
-                    //}
+                    }
                 }
             } 
             //删除展示script

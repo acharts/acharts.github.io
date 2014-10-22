@@ -1,8 +1,8 @@
 ---
 layout: null
-title: 使用flag
+title: 指定初始范围
 category: 股票图
---- 
+---
 
 {% include chart-header.html %}
 
@@ -17,7 +17,7 @@ category: 股票图
 {% include script.html %}
 
   <script type="text/javascript">
-  $.getJSON('../../json/stock-data.json',function  (data) {
+  $.getJSON('/json/stock-data.json',function  (data) {
     var stock = new AStock({
         id : 'canvas',
         width : 950,
@@ -26,14 +26,14 @@ category: 股票图
             margin : [60,50,60,50] //画板的边距
         },
         xAxis : {//格式化时间
+            labels : {
+              label : {
+                'font-size': '8'
+              }
+            },
             type : 'time' ,
             formatter : function(value)   {
                 return Chart.Date.format(new Date(value),'yyyy-mm-dd');
-            },
-            labels : {
-              label : {
-                'font-size': '10'
-              }
             },
             animate : false
         },
@@ -45,41 +45,25 @@ category: 股票图
                 markers : {
                     single: true
                 },
-                animate : false,
-                line : {
-                    'stroke-width' : 1
-                },
-                lineActived : {
-                    'stroke-width' : 1
-                }
+                animate : false
             }
         },
         tooltip : {
             valueSuffix : '￥'
         },
+        legend: null,
         zoom: [Date.UTC(2007,0,01),Date.UTC(2008,0,01)],
         series : [{
-            name: 'test to EUR',
+            name: 'USD to EUR',
+            line : {
+                'stroke-width' : 1
+            },
+            lineActived : {
+                'stroke-width' : 1
+            },
             pointInterval: 24 * 3600 * 1000,
             pointStart: Date.UTC(2006, 0, 01),
-            data: data,
-            id: 'series1'
-        },{
-            type: 'flag',
-            name: 'flag',
-            animate: false,//去掉动画
-            onSeries:'series1',
-            data:[
-                {
-                    x: Date.UTC(2007, 0, 01)
-                },
-                {
-                    x: Date.UTC(2007, 5, 01)
-                },
-                {
-                    x: Date.UTC(2008, 0, 01)
-                }
-            ]
+            data: data
         }]
     });
     stock.render();

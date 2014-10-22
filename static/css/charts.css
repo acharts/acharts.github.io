@@ -3643,3 +3643,6 @@ background-color: #eee;
 #themeSel{
   margin: 10px;
 }
+#J_Demo{
+  min-height: 400px;
+}

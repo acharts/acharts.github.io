@@ -17,7 +17,7 @@ category: 股票图
 {% include script.html %}
 
   <script type="text/javascript">
-  $.getJSON('../../json/stock-data.json',function  (data) {
+  $.getJSON('/json/stock-data.json',function  (data) {
         var stock = new AStock({
             id : 'canvas',
             width : 950,
@@ -48,6 +48,7 @@ category: 股票图
                     animate : false
                 }
             },
+            legend: null,
             tooltip : {
                 valueSuffix : '￥'
             },
