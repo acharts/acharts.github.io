@@ -15,17 +15,29 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
         e.preventDefault();
         var href = $(this).attr('href');
         $('li', sideMenu).removeClass('active');
+        $('li.treeview', sideMenu).removeClass('selected');
         selectedItem = $(this).parent().addClass('active');
-        selectedItem.parents('li.treeview').addClass('active');
+        selectedItem.parents('li.treeview').addClass('active selected');
         resetDemo(href);
         resetTitle(selectedItem, selectedItem.parents('li.treeview'));
+        $('#right1').show();
+        $('#right2').hide();
+        $('#indexPage').removeClass('active')
         $(window).scrollTop(0);
+    });
+    //首页
+    $('#indexPage').on('click',function(){
+        $('#right1').hide();
+        $('#right2').show();
+        $('li', sideMenu).removeClass('active');
+        $('li.treeview', sideMenu).removeClass('selected');
+        $(this).addClass('active');
     });
     // 页面加载完后根据hash值设置当前选中项
     if (navPage) {
         selectedItem = sideMenu.find('a[href="' + navPage + '"]').parent();
     }
-    selectedItem = selectedItem || $('a[href!="#"]:first', sideMenu).parent();
+    selectedItem = selectedItem || $('a#indexPage', sideMenu).parent();
     selectedItem.find('a:first').trigger('click').parents('li.treeview').find('a:first').trigger('click');
 
 
@@ -104,8 +116,8 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
                     var spaces = arr[1];
                     var hash = location.hash;
                     if(hash.indexOf('/theme-') < 0){
-                        data = data.replace("new AChart({","new AChart({" + spaces + "theme : AChart.Theme."+ theme);
-                        data = data.replace("new AStock({","new AStock({" + spaces + "theme : AChart.Theme."+ theme);
+                        data = data.replace("new AChart({","new AChart({" + spaces + "theme : AChart.Theme."+ theme + ",");
+                        data = data.replace("new AStock({","new AStock({" + spaces + "theme : AChart.Theme."+ theme + ",");
                     }
                 }
             } 

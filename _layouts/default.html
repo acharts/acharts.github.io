@@ -47,7 +47,7 @@
         <section class="sidebar">
             <ul class="sidebar-menu" id="J_SideBar">
                 <li data-minheight="520" data-maxheight="0" data-nosrc="1">
-                    <a href="#" class="indexPage"><i class="fa fa-dashboard"></i>首页</a>
+                    <a href="#" id="indexPage" class="indexPage"><i class="fa fa-dashboard"></i>概览</a>
                 </li>
                 {% for category in site.categories %}
                 <li class="treeview">
@@ -66,8 +66,44 @@
             </ul>
         </section>
     </aside>
-    <aside class="right-side">
-        {{content}}
+    <aside id="right1" class="right-side">
+        <section class="content-header" id="J_ContentHeader">
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="demo-container">
+                <iframe id="J_Demo" name="demo-form" class="demo-frame" src="" width="100%" height="100%" frameborder="0">
+
+                </iframe>
+            </div>
+
+            <!-- 源码 -->
+            <div class="nav-tabs-custom" id="J_SrcBox">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab_src" data-toggle="tab">源码</a>
+                    </li>
+                    <li><a href="#tab_js" data-toggle="tab">JS</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_src">
+                        <pre class="prettyprint linenums" id="J_Src"></pre>
+                    </div>
+                    <div class="tab-pane" id="tab_js">
+                        <pre class="prettyprint linenums" id="J_JS"></pre>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </aside>
+    <aside id="right2" class="right-side">
+        <section class="content-header" id="J_ContentHeader">
+            <h1>概 览</h1>
+        </section>
+        <section class="content">
+            {{content}}
+        </section>
     </aside>
 </div>
 

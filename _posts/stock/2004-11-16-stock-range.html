@@ -48,11 +48,12 @@ category: 股票图
                 animate : false
             }
         },
+        xTickCounts : [1,8],//设置x轴tick最小数目和最大数目 
         tooltip : {
             valueSuffix : '￥'
         },
         legend: null,
-        zoom: [Date.UTC(2007,0,01),Date.UTC(2008,0,01)],
+        zoom: [Date.UTC(2007,0,01),Date.UTC(2008,0,01)],//设置启示时间和结束时间
         series : [{
             name: 'USD to EUR',
             line : {

@@ -2618,6 +2618,9 @@ Component: timeline
   color: #222;
   background: #f9f9f9;
 }
+.skin-blue .sidebar > .sidebar-menu > li.selected > a{
+  color: #f37800;
+}
 .skin-blue .sidebar > .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
   background: #f9f9f9;
@@ -2637,9 +2640,11 @@ Component: timeline
 .skin-blue .treeview-menu > li > a {
   color: #777;
 }
-.skin-blue .treeview-menu > li.active > a,
-.skin-blue .treeview-menu > li > a:hover {
+.skin-blue .treeview-menu > li.active > a,.skin-blue .treeview-menu > li.active > a:hover{
   color: #f37800;
+}
+.skin-blue .treeview-menu > li > a:hover {
+  color: #222;
 }
 .skin-blue .sidebar-form {
   -webkit-border-radius: 2px;
@@ -3645,4 +3650,7 @@ background-color: #eee;
 }
 #J_Demo{
   min-height: 400px;
+}
+#indexPage.active{
+  color: #f37800
 }

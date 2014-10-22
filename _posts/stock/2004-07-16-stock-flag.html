@@ -17,7 +17,7 @@ category: 股票图
 {% include script.html %}
 
   <script type="text/javascript">
-  $.getJSON('/json/stock-data.json',function  (data) {
+  $.getJSON('/json/stock-flag.json',function  (data) {
     var stock = new AStock({
         id : 'canvas',
         width : 950,
@@ -37,9 +37,11 @@ category: 股票图
             },
             animate : false
         },
+        xTickCounts : [1,8],//设置x轴tick最小数目和最大数目 
         legend: null,
         yAxis : {
-            animate : false
+            animate : false,
+            grid: null
         },
         seriesOptions : { //设置多个序列共同的属性
             lineCfg : { //如果数据序列未指定类型，则默认为指定了xxCfg的类型，否则都默认是line
