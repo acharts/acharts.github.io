@@ -2,4 +2,80 @@
 layout: default
 title: 首页
 ---
+<style type="text/css">
+    .indexContent{
 
+    }
+    .indexHeader{
+        position: relative;;
+    }
+    .indexHeader .indexTitle{
+        width: 150px;
+        position: relative;
+        background: #fff;
+        z-index: 5;
+        padding-left: 20px;
+        color: #666;
+    }
+    .indexHeader hr{
+        position: absolute;
+        width: 100%;
+        top: 10px;
+        margin: 0;
+        z-index: 4;
+    }
+    .imageContent{
+        float: left;
+        display: block;
+        width: 360px;
+        height: 230px;
+        border: 1px solid #dcdcdc;
+        margin-left: 50px;
+        border-radius: 4px;
+        margin-top:35px;
+        padding: 2px;
+        cursor: pointer;
+    }
+    .imageContent:hover{
+        border: 1px solid #f37800;
+    }
+    .imageContent img{
+        width: 355px;
+        height: 175px;
+        border: 0;
+    }
+    .imageContent p{
+        color: #888;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        margin-top: 15px;
+    }
+    .imageContent:hover p{
+        color: #f37800;
+    }
+</style>
+<div style="padding: 0 30px">
+    {% for category in site.categories %}
+        <div class="clearfix" style="padding: 20px 0;">
+            {% assign freestyle = true %}
+            {% for post in category[1] %}
+                {% if post.image %}
+                    {% if freestyle %}
+                    <div class="indexContent">
+                        <div class="indexHeader">
+                            <h4 class="indexTitle"><i class="fa fa-bar-chart-o"></i> {{ category[0] }}</h4>
+                            <hr />
+                        </div>
+                    </div>
+                    {% assign freestyle = false %}
+                    {% endif %}
+                    <a class="imageContent" href="/index.html#{{post.url}}">
+                        <img src="{{post.image}}" border="0" />
+                        <p>{{post.title}}</p>
+                    </a>
+                {% endif %}
+            {% endfor %}    
+        </div>
+    {% endfor %}
+</div>
