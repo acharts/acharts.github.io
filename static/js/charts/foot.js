@@ -25,6 +25,17 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
         $('#indexPage').removeClass('active')
         $(window).scrollTop(0);
     });
+    $('#right2').delegate('a[href!="#"]', 'click', function(e) {
+        e.preventDefault();
+        var href = $(this).attr('href'),
+            a = sideMenu.find('a[href="' + href + '"]'),
+            selectedItem = a.parent();
+        var p = selectedItem.find('a:first').parents('li.treeview');
+        if(!p.hasClass('active')){
+            p.find('a:first').trigger('click');
+        }
+        a.trigger('click');
+    });
     //首页
     $('#indexPage').on('click',function(){
         $('#right1').hide();
