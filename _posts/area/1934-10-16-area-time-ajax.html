@@ -16,19 +16,12 @@ category: 区域图
 {% include script.html %}
 <script type="text/javascript">
     $.getJSON('/json/area-time-data.json',function  (data) {
-    	console.log(data)
       var chart = new AChart({
         id : 'canvas',
         width : 950,
-        height : 400,
+        height : 350,
         plotCfg : {
           margin : [50,50,80] //画板的边距
-        },
-        title : {
-          text : '区域图'
-        },
-        subTitle : {
-          text : 'Source: WorldClimate.com'
         },
         xAxis : {//格式化时间
           type : 'time' ,

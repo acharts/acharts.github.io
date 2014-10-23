@@ -24,7 +24,6 @@ image: /static/css/img/dynamic/dynamic-line.jpg
           },
           xAxis : {
             type : 'time',
-            tickInterval : 1000,
             labels : {
               label : {
                 'font-size': '10'
@@ -48,6 +47,7 @@ image: /static/css/img/dynamic/dynamic-line.jpg
             dy : -150,
             dx : -60
           },
+          xTickCounts : [1,8],//设置x轴tick最小数目和最大数目 
           series : [ {
               name: 'New York',
               smooth : true,

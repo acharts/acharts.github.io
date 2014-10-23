@@ -31,11 +31,11 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
             a = sideMenu.find('a[href="' + href + '"]'),
             selectedItem = a.parent();
         var p = selectedItem.find('a:first').parents('li.treeview');
-        console.log(p,p.hasClass('active'))
         if(!p.hasClass('active')){
             p.find('a:first').trigger('click');
         }
         a.trigger('click');
+        //setNavPage('');
     });
     //首页
     $('#indexPage').on('click',function(){
@@ -120,7 +120,7 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
     function dealCodes(data){
         if(localStorage){
             var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'SmoothBase';
-            if($.trim(theme) != 'Base'){
+            if($.trim(theme) != 'Smooth1'){
                 var reg = /(\s+)series/ig;
                 var arr = reg.exec(data);
                 if(arr && arr[1]){
@@ -184,8 +184,8 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
             $('#themeSelHide').val(localStorage['AChartIOTheme']);
         }
         var items = [
-              {text:'default',value:'Base'},
-              {text:'Smooth1',value:'Smooth1'},
+              {text:'Base',value:'Base'},
+              {text:'default',value:'Smooth1'},
               {text:'Smooth2',value:'Smooth2'},
               {text:'Smooth3',value:'Smooth3'},
               {text:'Smooth4',value:'Smooth4'},
