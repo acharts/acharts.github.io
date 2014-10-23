@@ -51,7 +51,6 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
     selectedItem = selectedItem || $('a#indexPage', sideMenu).parent();
     selectedItem.find('a:first').trigger('click').parents('li.treeview').find('a:first').trigger('click');
 
-
     demoEl.on('load', function() {
         var frameDoc = demoEl[0].contentWindow.document,
             docBody = frameDoc.body || frameDoc.documentElement,
@@ -133,7 +132,7 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
                 }
             } 
             //删除展示script
-            data = data.replace("<script>if(localStorage){var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'Smooth1';AChart.ATTRS.theme = AChart.Theme[theme];}</script>","")
+            data = data && data.replace("<script>if(localStorage){var theme = localStorage['AChartIOTheme'] ? localStorage['AChartIOTheme'] : 'Smooth1';AChart.ATTRS.theme = AChart.Theme[theme];}</script>","")
         }
         return data;
     }
