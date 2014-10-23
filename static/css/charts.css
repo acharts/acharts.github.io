@@ -3569,6 +3569,7 @@ cursor: pointer;
 height: 28px;
 width: 28px;
 border-left: none;
+background-color: #ccc;
 -webkit-border-radius: 0;
 -moz-border-radius: 0;
 border-radius: 0 3px 3px 0;
@@ -3646,7 +3647,10 @@ cursor: pointer;
 background-color: #eee;
 }
 #themeSel{
-  margin: 10px;
+  top: 10px;
+  position: absolute;
+  right: 30px;
+  z-index: 10;
 }
 #J_Demo{
   min-height: 400px;

@@ -3,6 +3,12 @@ layout: default
 title: 首页
 ---
 <style type="text/css">
+    #J-indexHeader{
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+        top: 50px;
+    }
     .indexContent{
 
     }
@@ -55,7 +61,11 @@ title: 首页
         color: #f37800;
     }
 </style>
-<div style="padding: 0 15px">
+<section class="content-header" id="J-indexHeader" style="">
+    <h1>概 览</h1>
+</section>
+<section class="content" style="padding-top: 50px;">
+     <div style="padding: 0 15px">
     {% for category in site.categories %}
         <div class="clearfix" style="padding: 20px 0;">
             {% assign freestyle = true %}
@@ -78,4 +88,6 @@ title: 首页
             {% endfor %}    
         </div>
     {% endfor %}
-</div>
+    </div>
+</section>
+

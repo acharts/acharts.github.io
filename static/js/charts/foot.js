@@ -31,6 +31,7 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
             a = sideMenu.find('a[href="' + href + '"]'),
             selectedItem = a.parent();
         var p = selectedItem.find('a:first').parents('li.treeview');
+        console.log(p,p.hasClass('active'))
         if(!p.hasClass('active')){
             p.find('a:first').trigger('click');
         }
@@ -40,7 +41,7 @@ BUI.use(['bui/cookie', 'bui/menu', 'bui/tab','bui/select'], function(Cookie, Men
     $('#indexPage').on('click',function(){
         $('#right1').hide();
         $('#right2').show();
-        $('li', sideMenu).removeClass('active');
+        $('.treeview-menu li', sideMenu).removeClass('active');
         $('li.treeview', sideMenu).removeClass('selected');
         $(this).addClass('active');
     });

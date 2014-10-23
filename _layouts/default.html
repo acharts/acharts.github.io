@@ -38,8 +38,7 @@
             <span class="icon-bar"></span>
         </a>
         <div class="navbar-right">
-            <div id="themeSel"></div>
-            <input type="hidden" value="" id="themeSelHide" />
+            
         </div>
     </nav>
 </div>
@@ -68,6 +67,10 @@
         </section>
     </aside>
     <aside id="right1" class="right-side">
+        <div id="themeSel">
+            <input type="hidden" value="" id="themeSelHide" />
+        </div>
+            
         <section class="content-header" id="J_ContentHeader">
         </section>
         <!-- Main content -->
@@ -99,12 +102,7 @@
         </section>
     </aside>
     <aside id="right2" class="right-side">
-        <section class="content-header" id="J_ContentHeader">
-            <h1>概 览</h1>
-        </section>
-        <section class="content">
-            {{content}}
-        </section>
+        {{content}}
     </aside>
 </div>
 
