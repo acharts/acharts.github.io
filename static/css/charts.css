@@ -3681,35 +3681,17 @@ background-color: #eee;
   transition: none;
   font-weight: bold;
   text-shadow: -1px 1px 1px rgba(0,0,0,0.7);
-  -webkit-box-shadow: 0 1px 3px rgba(54,54,68,0.8),inset 0 -1px 3px rgba(246,247,248,0.5);
-  -moz-box-shadow: 0 1px 3px rgba(54,54,68,0.8),inset 0 -1px 3px rgba(246,247,248,0.5);
-  -ms-box-shadow: 0 1px 3px rgba(54,54,68,0.8),inset 0 -1px 3px rgba(246,247,248,0.5);
-  -o-box-shadow: 0 1px 3px rgba(54,54,68,0.8),inset 0 -1px 3px rgba(246,247,248,0.5);
-  box-shadow: 0 1px 3px rgba(54,54,68,0.8),inset 0 -1px 3px rgba(246,247,248,0.5);
   border-collapse: separate;
-  border: 1px solid #000;
   background-color: #363644;
-  background-image: -webkit-gradient(radial,center center,0,center center,460,from(#4c5b63),to(#363644));
-  background-image: -webkit-radial-gradient(circle,#4c5b63,#363644);
-  background-image: -moz-radial-gradient(circle,#4c5b63,#363644);
-  background-image: -ms-radial-gradient(circle,#4c5b63,#363644);
-  background-image: -o-radial-gradient(circle,#4c5b63,#363644);
+  background-image: -webkit-gradient(radial,center center,0,center center,460,from(#3c8dbc),to(#367fa9));
+  background-image: -webkit-radial-gradient(circle,#3c8dbc,#367fa9);
+  background-image: -moz-radial-gradient(circle,#3c8dbc,#367fa9);
+  background-image: -ms-radial-gradient(circle,#3c8dbc,#367fa9);
+  background-image: -o-radial-gradient(circle,#3c8dbc,#367fa9);
   background-repeat: no-repeat;
 }
 
 .forkme:hover {
-  text-decoration: none;
-  background-color: #4d4d60;
-  background-image: -webkit-gradient(radial,center center,0,center center,460,from(#627680),to(#4d4d60));
-  background-image: -webkit-radial-gradient(circle,#627680,#4d4d60);
-  background-image: -moz-radial-gradient(circle,#627680,#4d4d60);
-  background-image: -ms-radial-gradient(circle,#627680,#4d4d60);
-  background-image: -o-radial-gradient(circle,#627680,#4d4d60);
-  background-repeat: no-repeat;
-  -webkit-box-shadow: 0 1px 3px rgba(54,54,68,0.8),inset 0 -1px 3px rgba(246,247,248,0.5);
-  -moz-box-shadow: 0 1px 3px rgba(54,54,68,0.8),inset 0 -1px 3px rgba(246,247,248,0.5);
-  -ms-box-shadow: 0 1px 3px rgba(54,54,68,0.8),inset 0 -1px 3px rgba(246,247,248,0.5);
-  -o-box-shadow: 0 1px 3px rgba(54,54,68,0.8),inset 0 -1px 3px rgba(246,247,248,0.5);
-  box-shadow: 0 1px 3px rgba(54,54,68,0.8),inset 0 -1px 3px rgba(246,247,248,0.5);
-  border-collapse: separate;
+  opacity: .9;
+  color: #f9f9f9;
 }
