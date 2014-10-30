@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8" >
+    <meta name="keywords" content="acharts, charts, javascript charts, ajax charts, plots, line charts, bar charts, pie charts, javascript 图表, web图形可视化" />
+    <meta name="description" content="ACharts - javascript 图形组件,全面的图形库，折线图、柱状图、区域图、饼图以及各种其他类型图形,易于使用,方便扩展" />
     <title>ACharts</title>
 
     <link rel="shortcut icon" href="/static/css/img/icon_04.png" type="image/png" />
-
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="/static/css/ionicons.min.css" rel="stylesheet" type="text/css" />
@@ -55,7 +56,8 @@
                 </li>
                 {% for category in site.categories %}
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-bar-chart-o"></i>{{ category[0] }}<i class="fa pull-right fa-angle-left"></i></a>
+                    <a href="#"><i border="0" class="cateIcon {{ category[0] }}"></i>{{ category[0] }}
+                    <i class="fa pull-right fa-angle-left"></i></a>
                     <ul class="treeview-menu">
                         {% for post in category[1] %}
                         <li>

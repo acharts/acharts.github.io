@@ -3695,3 +3695,92 @@ background-color: #eee;
   opacity: .9;
   color: #f9f9f9;
 }
+.cateIcon{
+  border: 0;
+  height: 10px;
+  position: relative;;
+  width: 13px;
+  margin: 0 5px 0 1px;
+  display: inline-block;
+  background-size:13px 10px;
+  background-color: #f9f9f9;
+  background-repeat: no-repeat;
+}
+.cateIcon.large{
+  height: 14px;
+  width: 18px;
+  background-size:18px 14px;
+}
+.cateIcon.折线图{
+  background-image: url('/static/css/img/icon/line.gif'); 
+}
+.selected .cateIcon.折线图{
+  background-image: url('/static/css/img/icon/line_hover.gif'); 
+}
+.cateIcon.区域图{
+  background-image: url('/static/css/img/icon/area.gif'); 
+}
+.selected .cateIcon.区域图{
+  background-image: url('/static/css/img/icon/area_hover.gif'); 
+}
+.cateIcon.柱状图{
+  background-image: url('/static/css/img/icon/column.gif'); 
+}
+.selected .cateIcon.柱状图{
+  background-image: url('/static/css/img/icon/column_hover.gif'); 
+}
+.cateIcon.饼图{
+  background-image: url('/static/css/img/icon/pie.gif'); 
+}
+.selected .cateIcon.饼图{
+  background-image: url('/static/css/img/icon/pie_hover.gif'); 
+}
+.cateIcon.雷达图{
+  background-image: url('/static/css/img/icon/radar.gif'); 
+}
+.selected .cateIcon.雷达图{
+  background-image: url('/static/css/img/icon/radar_hover.gif'); 
+}
+.cateIcon.散列和气泡图{
+  background-image: url('/static/css/img/icon/bubble.gif'); 
+}
+.selected .cateIcon.散列和气泡图{
+  background-image: url('/static/css/img/icon/bubble_hover.gif'); 
+}
+.cateIcon.混合图{
+  background-image: url('/static/css/img/icon/mix.gif'); 
+}
+.selected .cateIcon.混合图{
+  background-image: url('/static/css/img/icon/mix_hover.gif'); 
+}
+.cateIcon.自定义皮肤{
+  background-image: url('/static/css/img/icon/theme.gif'); 
+}
+.selected .cateIcon.自定义皮肤{
+  background-image: url('/static/css/img/icon/theme_hover.gif'); 
+}
+.cateIcon.动态图{
+  background-image: url('/static/css/img/icon/dynamic.gif'); 
+}
+.selected .cateIcon.动态图{
+  background-image: url('/static/css/img/icon/dynamic_hover.gif'); 
+}
+.cateIcon.股票图{
+  background-image: url('/static/css/img/icon/stock.gif'); 
+}
+.selected .cateIcon.股票图{
+  background-image: url('/static/css/img/icon/stock_hover.gif'); 
+}
+.cateIcon.基本图形{
+  background-image: url('/static/css/img/icon/basic.gif'); 
+}
+.selected .cateIcon.基本图形{
+  background-image: url('/static/css/img/icon/basic_hover.gif'); 
+}
+
+
+
+
+
+
+
