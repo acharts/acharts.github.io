@@ -1,0 +1,67 @@
+---
+layout: null
+title: 折线图
+category: 雷达图
+image: /static/css/img/radar/radar-line.jpg
+---
+
+{% include chart-header.html %}
+
+<div class="detail-section">
+    <div id="canvas">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+
+  <script type="text/javascript">
+      var chart = new AChart({
+        id : 'canvas',
+        width : 950,
+        height : 500,
+        plotCfg : {
+          margin : [50,50,100]
+
+        },
+        xAxis : {
+          type : 'circle',
+          line : null,
+          ticks : ['勇气','智慧','力量','政治','潜力','魅力']
+        },
+        yAxis : {
+          title : null,
+          type : 'radius',
+          grid : {
+            type : 'circle' //圆形栅格，可以改成polygon
+          },
+          labels : {
+            label : {
+              x : -12
+            }
+          },
+          min : 0
+        },
+
+        series: [
+          {
+              name : '张三',
+              type: 'line',
+              data: [8, 7, 6, 5, 4, 3, 2, 1]
+          },
+          {
+              type: 'line',
+              name: '李四',
+              data: [1, 2, 3, 4, 5, 6, 7, 8]
+          }, {
+              type: 'line',
+              name: '王五',
+              data: [1, 8, 2, 7, 3, 6, 4, 5]
+          }
+          ]
+      });
+
+      chart.render();
+  </script>
+
+{% include chart-footer.html %}
