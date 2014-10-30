@@ -1,0 +1,63 @@
+---
+layout: null
+title: 气泡图沿时间分步
+category: 散列/气泡图
+---
+
+{% include chart-header.html %}
+
+<div class="detail-section">
+    <div id="canvas">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+  <script type="text/javascript">
+        var chart = new AChart({
+          id : 'canvas',
+          width : 950,
+          height : 500,
+          plotCfg : {
+            margin : [50,50,100]
+          },
+          xAxis : {
+            type : 'time',
+            formatter : function(value)   {
+              return AChart.Date.format(new Date(value),'yyyy-mm-dd');
+            }
+          },
+          yAxis : {
+            title : {
+              text : '气泡'
+            },
+            min : -10
+          },  
+          tooltip : {
+            shared : true
+          },
+          seriesOptions : {
+              bubbleCfg : {
+                
+              }
+          },
+          series: [{
+            name : 'bubble1',
+            data: [
+              [1147651200000,81,63],
+              [1147737600000,5,89],
+              [1147824000000,50,73],
+              [1147910400000,22,14],
+              [1147996800000,24,20],
+              [1148256000000,37,34],
+              [1148342400000,56,53],
+              [1148428800000,45,70],
+              [1148515200000,44,28],
+              [1148601600000,52,59]]
+        }]
+        });
+
+        chart.render();
+  </script>
+
+{% include chart-footer.html %}
