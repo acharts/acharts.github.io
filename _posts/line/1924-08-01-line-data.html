@@ -36,13 +36,18 @@ category: 折线图
             margin : [50,50,80] //画板的边距
           },
           xAxis : {
-            categories : ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+            type : 'category'
           },
           data : data,
           tooltip : {
             valueSuffix : '°C',
             shared : true, //是否多个数据序列共同显示信息
             crosshairs : true //是否出现基准线
+          },
+          seriesOptions: {
+            lineCfg : {
+              xField : 'month'
+            }
           },
           series : [{
                 name: 'Tokyo',
