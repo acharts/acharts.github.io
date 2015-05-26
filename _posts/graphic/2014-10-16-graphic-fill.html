@@ -1,0 +1,68 @@
+---
+layout: null
+title: 填充
+category: 基本图形
+---
+
+{% include chart-header.html %}
+
+<div class="detail-section">
+    <div id="canvas">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+  <script type="text/javascript">
+   
+      //创建画板
+      var canvas = new AChart.Canvas({
+        id : 'canvas',
+        height : 500,
+        width : 500
+      });
+
+      //画矩形
+      canvas.addShape('rect',{
+        x : 100,
+        y : 0,
+        r : 5,
+        width : 50,
+        height: 50,
+        stroke : 'yellow',
+        fill : '0-#ff0000-#fff'
+      });
+
+      //画矩形
+      canvas.addShape('rect',{
+        x : 200,
+        y : 0,
+        r : 5,
+        width : 50,
+        height: 50,
+        stroke : 'yellow',
+        fill : '90-#ff0000-#fff'
+      });
+
+      //圆
+      canvas.addShape('circle',{
+        cx : 125,
+        cy : 100,
+        r : 20,
+        stroke : '#red',
+        fill : 'r(0.25, 0.75)#fff-#ff0000'
+      });
+
+      //椭圆
+      canvas.addShape('ellipse',{
+        cx : 200,
+        cy : 100,
+        rx : 20,
+        ry : 30,
+        fill : 'r(0.5, 0.5)blue-#fff',
+        stroke : 'blue'
+      });
+
+      </script>
+
+{% include chart-footer.html %}

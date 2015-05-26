@@ -1,0 +1,145 @@
+---
+layout: null
+title: 多屏k线图
+category: 股票图
+image: /static/css/img/stock/stock-multiple-screen.jpg
+---
+
+{% include chart-header.html %}
+
+<div class="detail-section">
+    <div id="canvas" style="height : 600px;">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+{% include stock-script.html %}
+{% include script.html %}
+
+  <script type="text/javascript">
+  $.getJSON('/json/stock-mutiple-screen.json',function  (data) {
+        var stock = new AStock({
+            id : 'canvas',
+            width : 950,
+            height : 600,
+            plotCfg : {
+                margin : [10,50,20,50] //画板的边距
+            },
+            title : {
+                text : ''
+            },
+            subTitle : {
+                text : ''
+            },
+            xAxis : {//格式化时间
+                type : 'timeCategory' ,
+                formatter : function(value)   {
+                    return Chart.Date.format(new Date(value),'yyyy-mm-dd hh:MM:ss');
+                },
+                animate : false
+            },
+            yAxis : [{ //设置多个y轴
+                position: 'left',
+                grid : {
+                    animate : false
+                },
+                animate : false
+            }],
+            seriesOptions : { 
+                candlestickCfg : { //设置k线图的图形配置
+                    animate : false,
+                    candlesticks:{
+                        candlestick:{
+                            riseShape: {
+                                fill : '#fff'
+                            },
+                            fallShape: {
+                                
+                            }
+                        }
+                    }
+                }
+            },
+            xTickCounts : [1,5],//设置x轴tick最小数目和最大数目 
+            rangeSelectorOption: {
+                xAxis: {
+                    grid : {
+                        line : {
+                            stroke : '#ddd'
+                        }
+                    },
+                    labels : {
+                        label : {
+                            'text-anchor' : 'middle',
+                            y: -5
+                        }
+                    },
+                    formatter : function(value)   {
+                        return Chart.Date.format(new Date(value),'yyyy.mm.dd');
+                    }
+                },
+                zoom: [1318594140000,1318607940000],
+                plots: [{ //配置每个屏幕的高度
+                    height: 300
+                },{
+                    height: 150
+                },{
+                    height: 100
+                }],
+                dragRefresh: false,
+                sampling: { //由于数据过大，当超过200的时候进行采样合并处理
+                    enable: true,
+                    max: 200
+                }
+            },
+            tooltip : {
+                valueSuffix : '￥',
+                shared: true,
+                crosshairs:true
+            },
+            series : [{
+                plotIndex: 0, //指定所处的屏幕的index索引
+                type: 'candlestick',
+                name: '股票',
+                tipNames: ['开盘','最高','最低','收盘'],
+                suffix: '元',
+                data: data
+            },{
+                plotIndex:1,
+                onCandlestick:{
+                    riseCfg:{
+                        fill:'red'
+                    },
+                    fallCfg:{
+                        fill: 'green'
+                    }
+                },
+                type: 'column',
+                name: '交易总额',
+                dataIndex: 5,//指定数据为data的index索引
+                suffix: '万元',
+                animate: false,
+                pointRenderer: function(point){
+                    return point.value.toFixed(2);
+                }
+            },
+            {
+                plotIndex:2,
+                type: 'line',
+                name: '交易总额倍率',
+                dataIndex: 6,
+                samplingType: 'avg', //指定采样处理的类型是平均采样
+                suffix: '%',
+                markers : null,
+                animate: false,
+                pointRenderer: function(point){
+                    return point.value.toFixed(2);
+                }
+            }]
+        });
+        stock.render();
+    });
+  </script>
+
+{% include chart-footer.html %}

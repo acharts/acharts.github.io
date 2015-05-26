@@ -1,0 +1,74 @@
+---
+layout: null
+title: 指定初始范围
+category: 股票图
+---
+
+{% include chart-header.html %}
+
+<div class="detail-section">
+    <div id="canvas" style="width : 950px;height : 400px;">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+{% include stock-script.html %}
+{% include script.html %}
+
+  <script type="text/javascript">
+  $.getJSON('/json/stock-data.json',function  (data) {
+    var stock = new AStock({
+        id : 'canvas',
+        width : 950,
+        height : 400,
+        plotCfg : {
+            margin : [60,50,60,50] //画板的边距
+        },
+        xAxis : {//格式化时间
+            labels : {
+              label : {
+                'font-size': '8'
+              }
+            },
+            type : 'time' ,
+            formatter : function(value)   {
+                return Chart.Date.format(new Date(value),'yyyy-mm-dd');
+            },
+            animate : false
+        },
+        yAxis : {
+            animate : false
+        },
+        seriesOptions : { //设置多个序列共同的属性
+            lineCfg : { //如果数据序列未指定类型，则默认为指定了xxCfg的类型，否则都默认是line
+                markers : {
+                    single: true
+                },
+                animate : false
+            }
+        },
+        xTickCounts : [1,8],//设置x轴tick最小数目和最大数目 
+        tooltip : {
+            valueSuffix : '￥'
+        },
+        legend: null,
+        zoom: [Date.UTC(2007,0,01),Date.UTC(2008,0,01)],//设置启示时间和结束时间
+        series : [{
+            name: 'USD to EUR',
+            line : {
+                'stroke-width' : 1
+            },
+            lineActived : {
+                'stroke-width' : 1
+            },
+            pointInterval: 24 * 3600 * 1000,
+            pointStart: Date.UTC(2006, 0, 01),
+            data: data
+        }]
+    });
+    stock.render();
+    });
+  </script>
+
+{% include chart-footer.html %}

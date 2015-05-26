@@ -1,0 +1,59 @@
+---
+layout: null
+title: 柱状图
+category: 雷达图
+image: /static/css/img/radar/radar-column.jpg
+---
+
+{% include chart-header.html %}
+
+<div class="detail-section">
+    <div id="canvas">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+
+  <script type="text/javascript">
+        var chart = new AChart({
+          id : 'canvas',
+          width : 950,
+          height : 500,
+          plotCfg : {
+            margin : [50,50,100]
+
+          },
+          xAxis : {
+            type : 'circle',
+            tickInterval : 45
+          },
+          yAxis : {
+            title : null,
+            type : 'radius',
+            grid : {
+              type : 'polygon' //圆形栅格，可以改成circle
+            },
+            labels : {
+              label : {
+                x : -12
+              }
+            },
+            min : 0
+          },
+          tooltip : {
+            shared : true //共享栅格
+          },
+          series: [
+              {
+                  name : 'column',
+                  type: 'column',
+                  data: [8, 7, 6, 5, 4, 6, 2, 7]
+              }
+            ]
+        });
+
+        chart.render();
+      </script>
+
+{% include chart-footer.html %}

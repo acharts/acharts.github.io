@@ -1,0 +1,79 @@
+---
+layout: null
+title: 多条折线
+category: 股票图
+image: /static/css/img/stock/stock-multiple.jpg
+---
+
+{% include chart-header.html %}
+
+<div class="detail-section">
+    <div id="canvas" style="width : 950px;height : 400px;">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+{% include stock-script.html %}
+{% include script.html %}
+
+  <script type="text/javascript">
+    $.getJSON('/json/stock-dataArr.json',function  (data) {
+            var stock = new AStock({
+                id : 'canvas',
+                width : 950,
+                height : 400,
+                plotCfg : {
+                    margin : [60,50,60,50] //画板的边距
+                },
+                xAxis : {//格式化时间
+                    type : 'time' ,
+                    labels : {
+                      label : {
+                        'font-size': '10'
+                      }
+                    },
+                    formatter : function(value)   {
+                        return Chart.Date.format(new Date(value),'yyyy-mm-dd');
+                    },
+                    animate : false
+                },
+                yAxis : {
+                    animate : false
+                },
+                xTickCounts : [1,8],//设置x轴tick最小数目和最大数目 
+                seriesOptions : { //设置多个序列共同的属性
+                    lineCfg : { //如果数据序列未指定类型，则默认为指定了xxCfg的类型，否则都默认是line
+                        markers : {
+                            single: true
+                        },
+                        animate : false,
+                        line : {
+                            'stroke-width' : 1
+                        },
+                        lineActived : {
+                            'stroke-width' : 1
+                        }
+                    }
+                },
+                tooltip : {
+                    valueSuffix : '￥'
+                },
+                zoom: [Date.UTC(2007,0,01),Date.UTC(2008,0,01)],
+                series : [{
+                    name: 'test to EUR',
+                    pointInterval: 24 * 3600 * 1000,
+                    pointStart: Date.UTC(2006, 0, 01),
+                    data: data[1]
+                },{
+                  name : 'test1 to EUR',
+                  data :data[0],
+                  pointInterval: 24 * 3600 * 1000,
+                  pointStart: Date.UTC(2006, 0, 01)
+                }]
+            });
+            stock.render();
+        });
+  </script>
+
+{% include chart-footer.html %}

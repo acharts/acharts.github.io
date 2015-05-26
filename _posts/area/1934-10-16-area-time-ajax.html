@@ -1,0 +1,55 @@
+---
+layout: null
+title: 时间异步
+category: 区域图
+---
+
+{% include chart-header.html %}
+
+<div class="detail-section">
+    <div id="canvas">
+
+    </div>
+</div>
+
+{% include chart-script.html %}
+{% include script.html %}
+<script type="text/javascript">
+    $.getJSON('/json/area-time-data.json',function  (data) {
+      var chart = new AChart({
+        id : 'canvas',
+        width : 950,
+        height : 350,
+        plotCfg : {
+          margin : [50,50,80] //画板的边距
+        },
+        xAxis : {//格式化时间
+          type : 'time' ,
+          formatter : function(value)   {
+            return AChart.Date.format(new Date(value),'yyyy-mm-dd');
+          },
+          autoAppend : false
+        },
+        seriesOptions : { //设置多个序列共同的属性
+          areaCfg : { //如果数据序列未指定类型，则默认为指定了xxCfg的类型，否则都默认是line
+            markers : {
+              single : true
+            }
+          }
+        },
+        tooltip : {
+          valueSuffix : '￥'
+        },
+        series : [{
+          name : 'test',
+          animate : false,
+          data : data
+        }]
+
+      });
+
+      chart.render();
+    });
+</script>
+
+{% include chart-footer.html %}

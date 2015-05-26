@@ -1,0 +1,94 @@
+---
+layout: default
+title: 首页
+---
+<style type="text/css">
+    #J-indexHeader{
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+        top: 50px;
+    }
+    .indexContent{
+
+    }
+    .indexHeader{
+        position: relative;;
+    }
+    .indexHeader .indexTitle{
+        width: 160px;
+        position: relative;
+        background: #fff;
+        z-index: 5;
+        padding-left: 20px;
+        color: #666;
+    }
+    .indexHeader hr{
+        position: absolute;
+        width: 100%;
+        top: 10px;
+        margin: 0;
+        z-index: 4;
+    }
+    .imageContent{
+        float: left;
+        display: block;
+        width: 325px;
+        height: 210px;
+        border: 1px solid #dcdcdc;
+        margin-left: 50px;
+        border-radius: 4px;
+        margin-top:35px;
+        padding: 2px;
+        cursor: pointer;
+    }
+    .imageContent:hover{
+        border: 1px solid #f37800;
+    }
+    .imageContent img{
+        width: 320px;
+        height: 155px;
+        border: 0;
+    }
+    .imageContent p{
+        color: #888;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        margin-top: 15px;
+    }
+    .imageContent:hover p{
+        color: #f37800;
+    }
+</style>
+<section class="content-header" id="J-indexHeader" style="">
+    <h1>概 览</h1>
+</section>
+<section class="content" style="padding-top: 50px;">
+     <div style="padding: 0 15px">
+    {% for category in site.categories %}
+        <div class="clearfix" style="padding: 20px 0;">
+            {% assign freestyle = true %}
+            {% for post in category[1] %}
+                {% if post.image %}
+                    {% if freestyle %}
+                    <div class="indexContent">
+                        <div class="indexHeader">
+                            <h4 class="indexTitle"><i border="0" class="cateIcon large {{ category[0] }}"></i> {{ category[0] }}</h4>
+                            <hr />
+                        </div>
+                    </div>
+                    {% assign freestyle = false %}
+                    {% endif %}
+                    <a class="imageContent" href="{{post.url}}">
+                        <img src="{{post.image}}" border="0" />
+                        <p>{{post.title}}</p>
+                    </a>
+                {% endif %}
+            {% endfor %}    
+        </div>
+    {% endfor %}
+    </div>
+</section>
+
+
